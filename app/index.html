@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Self Sovereign Identity</title>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="./app.js"></script>
+</head>
+<body>
+<div class="container">
+  <h1>Self Sovereign Identity DApp</h1>
+
+  <br/>
+  <br/>
+  <br/>
+
+
+
+  <nav class="navbar navbar-default navbar-inverse navbar-left">
+  <div class="container-fluid">
+    <!-- <div class="navbar-header">
+      <a class="navbar-brand" href="#">Identity</a>
+    </div> -->
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#createIdentityDiv" data-toggle="collapse" aria-expanded="false" aria-controls="createIdentityDiv">Identity Creation</a></li>
+      <li><a href="#createClaimDiv" data-toggle="collapse" aria-expanded="false" aria-controls="createClaimDiv">Create Claim</a></li>
+      <li><a href="#approveClaimDiv" data-toggle="collapse" aria-expanded="false" aria-controls="approveClaimDiv">Approve Claim</a></li>
+      <li><a href="#shareClaimDiv" data-toggle="collapse" aria-expanded="false" aria-controls="shareClaimDiv">Share Claim</a></li>
+      <li><a href="#verifyClaimDiv" data-toggle="collapse" aria-expanded="false" aria-controls="verifyClaimDiv">Verify Claim</a></li>
+    </ul>
+  </div>
+</nav>
+
+<br/>
+<br/>
+<br/>
+ <div id="createIdentityDiv">
+  <h2>Create Identity</h2>
+  <br/>
+  <br/>
+  <br/>
+
+  <label for="OwnerId">Accounts:</label>
+  <select class="selectpicker" id="ownerId">
+
+
+  </select>
+  <br/>
+  <br/>
+  <br/><label for="OwnerType">Identity Type: </label>
+  <select class="selectpicker" id="ownerType">
+    <option value="0">Individual</option>
+    <option value="1">Organisation (Relying Party)</option>
+    <option value="2">Issuer</option>
+  </select>
+  <br/> <br/>
+  <br/><label for="Name">Name:</label><input type="text" id="name" placeholder="e.g., Bob"></input>
+  <br/><br/><br/><button id="createIdentity" class="btn btn-primary" onclick="App.createIdentity()">Create Identity</button>
+  <br/><br/>
+  <span id="status"></span>
+  <br/>
+</div> <!-- create identity div -->
+<div id="createClaimDiv">
+ <h2>Create Claim</h2>
+ <br/>
+ <br/>
+ <br/>
+
+ <label for="Owner">Owner:</label>
+ <select class="selectpicker" id="owner">
+
+
+ </select>
+ <br/>
+ <br/>
+ <br/>
+
+ <label for="Issuer">Issuer: </label>
+ <select class="selectpicker" id="issuer">
+
+
+ </select>
+ <br/>
+ <br/>
+ <br/><label for="ClaimType">Claim Type: </label>
+ <select class="selectpicker" id="claimType">
+   <option value="0">Address</option>
+   <option value="1">Name</option>
+   <option value="2">Email</option>
+ </select>
+ <br/> <br/>
+ <br/><label for="Data">Data:</label><input type="text" id="data" placeholder="e.g., Name, Address, Email"></input>
+ <br/><br/><br/><button id="createClaim" class="btn btn-primary" onclick="App.createClaim()">Create Claim</button>
+ <br/><br/>
+ <span id="status"></span>
+ <br/>
+</div> <!-- create claim div -->
+<div id="approveClaimDiv">
+ <h2>Approve Claim</h1>
+ <br/>
+ <br/>
+ <br/>
+
+ <label for="Issuer">Issuer:</label>
+ <select class="selectpicker" id="approveClaimOwner">
+
+
+ </select>
+ <br/>
+ <br/>
+ <br/>
+ <!-- <label for="OwnerType">Identity Type: </label>
+ <select class="selectpicker" id="ownerType">
+   <option value="0">Individual</option>
+   <option value="1">Organisation (Relying Party)</option>
+   <option value="2">Issuer</option>
+ </select>
+ <br/> <br/>
+ <br/><label for="Name">Name:</label><input type="text" id="name" placeholder="e.g., Bob"></input> -->
+ <br/><br/><br/><button id="getClaims" class="btn btn-primary" onclick="App.getClaims()">Get Claims</button>
+ <br/><br/><br/>
+
+ <select class="selectpicker" id="approveClaimOwnerClaims">
+
+
+ </select>
+ <br/>
+ <br/>
+ <br/>
+ <!-- <label for="OwnerType">Identity Type: </label>
+ <select class="selectpicker" id="ownerType">
+   <option value="0">Individual</option>
+   <option value="1">Organisation (Relying Party)</option>
+   <option value="2">Issuer</option>
+ </select>
+ <br/> <br/>
+ <br/><label for="Name">Name:</label><input type="text" id="name" placeholder="e.g., Bob"></input> -->
+ <br/><br/><br/><button id="getClaimById" class="btn btn-primary" onclick="App.getClaimById()">Get Claim Details</button>
+ <br/><br/><br/>
+
+ <table class="table" id="claimDetailsTable">
+     <thead>
+       <tr>
+         <th>Owner</th>
+         <th>Issuer</th>
+         <th>Claim Type</th>
+         <th>Claim Status</th>
+         <th>Claim Data</th>
+         <th>Action</th>
+       </tr>
+     </thead>
+     <tbody>
+
+     </tbody>
+   </table>
+
+
+ <span id="status"></span>
+ <br/>
+</div> <!-- approve claim div -->
+<div id="shareClaimDiv">
+ <h2>Share Claim</h1>
+ <br/>
+ <br/>
+ <br/>
+
+ <label for="Issuer">Share With:</label>
+ <select class="selectpicker" id="shareClaimOwner">
+
+
+ </select>
+ <br/>
+ <br/>
+ <br/>
+
+ <select class="selectpicker" id="shareClaimOwnerClaims">
+
+
+ </select>
+ <!-- <label for="OwnerType">Identity Type: </label>
+ <select class="selectpicker" id="ownerType">
+   <option value="0">Individual</option>
+   <option value="1">Organisation (Relying Party)</option>
+   <option value="2">Issuer</option>
+ </select>
+ <br/> <br/>
+ <br/><label for="Name">Name:</label><input type="text" id="name" placeholder="e.g., Bob"></input> -->
+ <br/><br/><br/><button id="getClaims" class="btn btn-primary" onclick="App.getClaims()">Get Claims</button>
+ <br/><br/><br/>
+
+
+ <br/>
+ <br/>
+ <br/>
+ <span id="status"></span>
+ <br/>
+</div> <!-- share claim div -->
+<div id="verifyClaimDiv">
+ <h2>Verify Claim</h1>
+ <br/>
+ <br/>
+ <br/>
+
+ <label for="OwnerId">Accounts:</label>
+ <select class="selectpicker" id="ownerId">
+
+
+ </select>
+ <br/>
+ <br/>
+ <br/><label for="OwnerType">Identity Type: </label>
+ <select class="selectpicker" id="ownerType">
+   <option value="0">Individual</option>
+   <option value="1">Organisation (Relying Party)</option>
+   <option value="2">Issuer</option>
+ </select>
+ <br/> <br/>
+ <br/><label for="Name">Name:</label><input type="text" id="name" placeholder="e.g., Bob"></input>
+ <br/><br/><br/><button id="createIdentity" class="btn btn-primary" onclick="App.createIdentity()">Create Identity</button>
+ <br/><br/>
+ <span id="status"></span>
+ <br/>
+</div> <!-- verify claim div -->
+</div> <!-- container div -->
+
+</body>
+</html>
