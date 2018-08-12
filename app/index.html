@@ -39,6 +39,7 @@
 <br/>
 <br/>
  <div id="createIdentityDiv">
+   <br/>
   <h2>Create Identity</h2>
   <br/>
   <br/>
@@ -65,6 +66,7 @@
   <br/>
 </div> <!-- create identity div -->
 <div id="createClaimDiv">
+  <br/>
  <h2>Create Claim</h2>
  <br/>
  <br/>
@@ -100,6 +102,7 @@
  <br/>
 </div> <!-- create claim div -->
 <div id="approveClaimDiv">
+  <br/>
  <h2>Approve Claim</h1>
  <br/>
  <br/>
@@ -163,12 +166,13 @@
  <br/>
 </div> <!-- approve claim div -->
 <div id="shareClaimDiv">
+  <br/>
  <h2>Share Claim</h1>
  <br/>
  <br/>
  <br/>
 
- <label for="Issuer">Share With:</label>
+ <label for="Issuer">Owner:</label>
  <select class="selectpicker" id="shareClaimOwner">
 
 
@@ -177,10 +181,16 @@
  <br/>
  <br/>
 
- <select class="selectpicker" id="shareClaimOwnerClaims">
+ <!-- <label for="Issuer">Share With:</label>
+ <select class="selectpicker" id="shareClaimThirdParty">
 
 
  </select>
+ <br/>
+ <br/>
+ <br/> -->
+
+
  <!-- <label for="OwnerType">Identity Type: </label>
  <select class="selectpicker" id="ownerType">
    <option value="0">Individual</option>
@@ -189,39 +199,117 @@
  </select>
  <br/> <br/>
  <br/><label for="Name">Name:</label><input type="text" id="name" placeholder="e.g., Bob"></input> -->
- <br/><br/><br/><button id="getClaims" class="btn btn-primary" onclick="App.getClaims()">Get Claims</button>
+ <br/><br/><br/><button id="getClaimsShare" class="btn btn-primary" onclick="App.getClaimsShare()">Get Claims</button>
+
  <br/><br/><br/>
 
+ <select class="selectpicker" id="shareClaimOwnerClaims">
+
+
+
+ </select>
+
+ <br/><br/><br/>
+
+ <br/><br/><br/><button id="getClaimByIdShare" class="btn btn-primary" onclick="App.getClaimByIdShare()">Get Claim Details</button>
+
+ <br/><br/><br/>
+ <table class="table" id="shareClaimDetailsTable">
+     <thead>
+       <tr>
+         <th>Owner</th>
+         <th>Issuer</th>
+         <th>Claim Type</th>
+         <th>Claim Status</th>
+         <th>Claim Data</th>
+       </tr>
+     </thead>
+     <tbody>
+
+     </tbody>
+   </table>
+
 
  <br/>
  <br/>
  <br/>
+ <label for="Issuer">Share With:</label>
+ <select class="selectpicker" id="shareClaimThirdParty">
+
+
+ </select>
+ <br/>
+ <br/>
+ <br/>
+
+ <br/><br/><br/><button id="shareClaim" class="btn btn-primary" onclick="App.shareClaim()">Share Claim</button>
  <span id="status"></span>
  <br/>
 </div> <!-- share claim div -->
+<br/><br/><br/>
 <div id="verifyClaimDiv">
+  <br/>
  <h2>Verify Claim</h1>
  <br/>
  <br/>
  <br/>
 
- <label for="OwnerId">Accounts:</label>
- <select class="selectpicker" id="ownerId">
+ <label for="OwnerId">Relying Party:</label>
+ <select class="selectpicker" id="verifyClaimOwner">
+
+
+ </select>
+
+ <br/><br/><br/><button id="getClaimsVerify" class="btn btn-primary" onclick="App.getClaimsVerify()">Get Claims</button>
+
+ <br/><br/><br/>
+
+ <select class="selectpicker" id="verifyClaimOwnerClaims">
+
+
+
+ </select>
+
+ <br/><br/><br/>
+
+ <br/><br/><br/><button id="getClaimByIdVerify" class="btn btn-primary" onclick="App.getClaimByIdVerify()">Get Claim Details</button>
+
+ <br/><br/><br/>
+ <table class="table" id="verifyClaimDetailsTable">
+     <thead>
+       <tr>
+         <th>Owner</th>
+         <th>Issuer</th>
+         <th>Claim Type</th>
+         <th>Claim Status</th>
+         <th>Claim Data</th>
+       </tr>
+     </thead>
+     <tbody>
+
+     </tbody>
+   </table>
+
+
+ <br/>
+ <br/>
+ <br/>
+
+ <label for="Issuer">Issuer:</label>
+ <select class="selectpicker" id="verifyClaimIssuer">
 
 
  </select>
  <br/>
  <br/>
- <br/><label for="OwnerType">Identity Type: </label>
- <select class="selectpicker" id="ownerType">
-   <option value="0">Individual</option>
-   <option value="1">Organisation (Relying Party)</option>
-   <option value="2">Issuer</option>
- </select>
- <br/> <br/>
- <br/><label for="Name">Name:</label><input type="text" id="name" placeholder="e.g., Bob"></input>
- <br/><br/><br/><button id="createIdentity" class="btn btn-primary" onclick="App.createIdentity()">Create Identity</button>
- <br/><br/>
+ <br/>
+
+ <br/><br/><br/><button id="verifyClaim" class="btn btn-primary" onclick="App.verifyClaim()">Verify Claim</button>
+ <br/>
+ <br/>
+ <br/>
+
+
  <span id="status"></span>
  <br/>
 </div> <!-- verify claim div -->
