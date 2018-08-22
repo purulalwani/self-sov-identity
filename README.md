@@ -26,8 +26,8 @@ _****Code is not for production use or with any warranty, it is just to prove co
 
 # References
 
-Paper -> https://sovrin.org/wp-content/uploads/2017/06/The-Inevitable-Rise-of-Self-Sovereign-Identity.pdf
-ERC725 -> https://github.com/ethereum/EIPs/issues/725
-ERC735 -> https://github.com/ethereum/EIPs/issues/735
-Entity & Use cases -> https://w3c.github.io/vc-use-cases/ 
+* Paper -> https://sovrin.org/wp-content/uploads/2017/06/The-Inevitable-Rise-of-Self-Sovereign-Identity.pdf
+* ERC725 -> https://github.com/ethereum/EIPs/issues/725
+* ERC735 -> https://github.com/ethereum/EIPs/issues/735
+* Entity & Use cases -> https://w3c.github.io/vc-use-cases/ 
 
